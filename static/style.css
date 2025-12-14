@@ -1,0 +1,272 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f3f5f7;
+}
+
+.gradient-bg {
+    background: linear-gradient(135deg, #4f46e5, #9333ea);
+}
+
+.error-bg {
+    background: linear-gradient(135deg, #ff5b57, #ff8a5c);
+}
+
+.top-bar {
+    height: 48px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e1e4e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.top-bar__left {
+    font-weight: 600;
+}
+
+.top-bar__right {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-main {
+    min-height: calc(100vh - 48px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.1);
+    padding: 24px 28px;
+    box-sizing: border-box;
+}
+
+.card-center {
+    width: 480px;
+    max-width: 90%;
+}
+
+.card-title {
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.form-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-label {
+    font-size: 14px;
+}
+
+.form-input,
+.form-textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.btn {
+    padding: 8px 14px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+
+.btn-secondary {
+    background-color: #e5e7eb;
+    color: #111827;
+}
+
+.btn-small {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.error-text {
+    color: #dc2626;
+    font-size: 13px;
+}
+
+.result-block {
+    margin-bottom: 16px;
+}
+
+.result-label {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.result-value {
+    padding: 8px 10px;
+    background-color: #f9fafb;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+    font-size: 14px;
+}
+
+.result-columns {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.result-column {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #f9fafb;
+}
+
+.result-column-title {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.result-column.positive {
+    border: 1px solid #bbf7d0;
+}
+
+.result-column.negative {
+    border: 1px solid #fecaca;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #e5e7eb;
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 4px;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #22c55e;
+}
+
+.result-column.negative .progress-fill {
+    background-color: #ef4444;
+}
+
+.progress-value {
+    font-size: 12px;
+    text-align: right;
+    color: #4b5563;
+}
+
+.result-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.link-like {
+    color: #2563eb;
+    cursor: pointer;
+}
+
+.error-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    border: 2px solid #facc15;
+    color: #facc15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px auto;
+    font-weight: bold;
+}
+
+.error-details {
+    font-size: 13px;
+    margin: 12px 0 16px 0;
+    padding: 10px;
+    background-color: #fff7ed;
+    border-radius: 4px;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+.history-table th,
+.history-table td {
+    border: 1px solid #e5e7eb;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.history-table thead {
+    background-color: #f3f4f6;
+}
+
+.role-switch {
+    margin: 10px 0 16px 0;
+    font-size: 13px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.disclaimer {
+    margin-top: 12px;
+    font-size: 11px;
+    color: #6b7280;
+}
+
+.card-center {
+    width: 640px;            /* можно подогнать под макет */
+    max-width: 95%;
+}
+
+.history-wrapper {
+    width: 100%;
+    overflow-x: auto;        /* горизонтальная прокрутка, если не влезает */
+}
+
+.history-table {
+    width: 100%;
+    min-width: 600px;        /* чтобы колонки не схлопывались */
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
