@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Результат анализа эмоций{% endblock %}
+
+{% block content %}
+<div class="card card-center">
+    <h3 class="card-title">Результат анализа эмоций</h3>
+
+    <div class="result-block">
+        <div class="result-label">Анализируемый текст:</div>
+        <div class="result-value">{{ result.cleaned_text or "Текст не найден" }}</div>
+    </div>
+
+    <div class="result-columns">
+        <div class="result-column positive">
+            <div class="result-column-title">Позитивные эмоции</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ shares.positive }}%;"></div>
+            </div>
+            <div class="progress-value">{{ shares.positive }}%</div>
+        </div>
+        <div class="result-column negative">
+            <div class="result-column-title">Негативные эмоции</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ shares.negative }}%;"></div>
+            </div>
+            <div class="progress-value">{{ shares.negative }}%</div>
+        </div>
+    </div>
+
+    <div class="result-block">
+        <div>Доминирующая эмоция:
+            <span class="link-like">{{ result.emotion.label }}</span>
+        </div>
+        <div>Интенсивность: {{ result.emotion.intensity|capitalize }}</div>
+    </div>
+
+    <div class="role-switch">
+        <span>Роль:</span>
+        <label><input type="radio" name="role" value="support" checked> Оператор</label>
+        <label><input type="radio" name="role" value="moderator"> Модератор</label>
+        <label><input type="radio" name="role" value="marketer"> Маркетолог</label>
+    </div>
+
+    <div class="block role support" data-role="support">
+        <h3>Специалист поддержки</h3>
+        <p>{{ result.scenarios.for_support }}</p>
+    </div>
+
+    <div class="block role moderator" data-role="moderator">
+        <h3>Модератор</h3>
+        <p>{{ result.scenarios.for_moderator }}</p>
+    </div>
+
+    <div class="block role marketer" data-role="marketer">
+        <h3>Маркетолог</h3>
+        <p>{{ result.scenarios.for_marketer }}</p>
+    </div>
+
+    <div class="result-actions">
+        <a href="/analyze-form" class="btn btn-primary">Новый анализ</a>
+        <a href="/login" class="btn btn-secondary">Назад к входу</a>
+    </div>
+
+    {% if history %}
+    <hr style="margin: 20px 0;">
+    <h4 class="card-title">Последние анализы</h4>
+    <div class="history-wrapper">
+        <table class="history-table">
+            <thead>
+            <tr>
+                <th>Время</th>
+                <th>Текст</th>
+                <th>Эмоция</th>
+                <th>Интенсивность</th>
+                <th>Позитив</th>
+                <th>Негатив</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in history %}
+                <tr>
+                    <td>{{ item.timestamp.strftime("%d.%m.%Y %H:%M:%S") }}</td>
+                    <td>{{ item.text_short }}</td>
+                    <td>{{ item.emotion_label }}</td>
+                    <td>{{ item.intensity }}</td>
+                    <td>{{ item.positive }}%</td>
+                    <td>{{ item.negative }}%</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endif %}
+</div>
+
+<script>
+    const radios = document.querySelectorAll('input[name="role"]');
+    const blocks = document.querySelectorAll('.block.role');
+
+    function updateRole() {
+        const value = document.querySelector('input[name="role"]:checked').value;
+        blocks.forEach(b => {
+            if (b.dataset.role === value) {
+                b.style.display = 'block';
+            } else {
+                b.style.display = 'none';
+            }
+        });
+    }
+
+    radios.forEach(r => r.addEventListener('change', updateRole));
+    updateRole();
+</script>
+{% endblock %}

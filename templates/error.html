@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Ошибка{% endblock %}
+{% block body_class %}error-bg{% endblock %}
+
+{% block content %}
+<div class="card card-center">
+    <div class="error-icon">!</div>
+    <h3 class="card-title text-center">Произошла ошибка</h3>
+    <p class="text-center">Произошла непредвиденная ошибка. Попробуйте позже.</p>
+
+    <div class="error-details">
+        <div>Код ошибки: {{ code or "ERR-001" }}</div>
+        <div>Время: {{ time or "—" }}</div>
+        <div>Описание: {{ description or "Ошибка соединения с сервером анализа" }}</div>
+    </div>
+
+    <div class="result-actions">
+        <a href="/analyze-form" class="btn btn-primary">Повторить попытку</a>
+        <a href="/login" class="btn btn-secondary">Вернуться назад</a>
+    </div>
+</div>
+{% endblock %}

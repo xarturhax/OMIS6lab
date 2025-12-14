@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Вход в систему{% endblock %}
+{% block body_class %}gradient-bg{% endblock %}
+
+{% block content %}
+<div class="card card-center">
+    <h2 class="card-title text-center">Вход в систему</h2>
+    <form action="/login" method="post" class="form-vertical">
+        <label class="form-label" for="username">Логин:</label>
+        <input class="form-input" type="text" id="username" name="username" required>
+
+        <label class="form-label" for="password">Пароль:</label>
+        <input class="form-input" type="password" id="password" name="password" required>
+
+        {% if error %}
+            <p class="error-text">{{ error }}</p>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary full-width">Войти</button>
+    </form>
+</div>
+{% endblock %}

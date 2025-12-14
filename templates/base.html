@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Анализатор эмоций{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="{% block body_class %}{% endblock %}">
+<header class="top-bar">
+    <div class="top-bar__left">
+        Анализатор эмоций
+    </div>
+    <div class="top-bar__right">
+        {% if user %}
+            Пользователь: {{ user }}
+            <a href="/logout" class="btn btn-small btn-secondary">Выйти</a>
+            <a href="/history" class="btn btn-small btn-secondary">История</a>
+        {% endif %}
+    </div>
+</header>
+<main class="page-main">
+    {% block content %}{% endblock %}
+</main>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Анализатор эмоций{% endblock %}
+
+{% block content %}
+<div class="card card-center">
+    <h3 class="card-title">Введите текст для анализа эмоций</h3>
+    <form action="/analyze" method="post" class="form-vertical">
+        <textarea class="form-textarea" name="text" rows="6" placeholder="Введите ваше сообщение здесь..." required></textarea>
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">
+            Анализировать эмоции
+        </button>
+    </form>
+</div>
+{% endblock %}

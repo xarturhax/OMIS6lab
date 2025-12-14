@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}История анализов{% endblock %}
+
+{% block content %}
+<div class="card card-center">
+    <h3 class="card-title">История обработанных сообщений</h3>
+
+    {% if not history %}
+        <p>История пока пуста.</p>
+    {% else %}
+        <table class="history-table">
+            <thead>
+                <tr>
+                    <th>Время</th>
+                    <th>Текст</th>
+                    <th>Эмоция</th>
+                    <th>Интенсивность</th>
+                    <th>Позитив</th>
+                    <th>Негатив</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in history %}
+                <tr>
+                    <td>{{ item.timestamp.strftime("%d.%m.%Y %H:%M:%S") }}</td>
+                    <td>{{ item.text_short }}</td>
+                    <td>{{ item.emotion_label }}</td>
+                    <td>{{ item.intensity }}</td>
+                    <td>{{ item.positive }}%</td>
+                    <td>{{ item.negative }}%</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    <div class="result-actions">
+        <a href="/analyze-form" class="btn btn-primary">Новый анализ</a>
+        <a href="/login" class="btn btn-secondary">Назад к входу</a>
+    </div>
+</div>
+{% endblock %}
